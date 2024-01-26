@@ -1,0 +1,21 @@
+﻿<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-5">Cube Calculator</h2>
+            @{
+                using (Html.BeginForm("Cubed", "Cubed", FormMethod.Get))
+                {
+                    <div class="form-group mb-3">
+                        @Html.Label("Num", "Value")
+                        <input type="number" class="form-control" name="Num" id="Num" placeholder="Enter number" value="@TempData["number"]" />
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                }
+                if (TempData["cube"] != null)
+                {
+                    <div><b>The cube of @TempData["number"] is @TempData["cube"]</b></div>
+                }
+            }
+        </div>
+    </div>
+</div>

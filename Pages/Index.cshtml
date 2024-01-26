@@ -1,0 +1,41 @@
+﻿@page "{id:long?}"
+@model IndexModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplicationTraining.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div>@Model.product.Name</div>
+    <div>@Model.product.Price</div>
+</body>
+</html>
+
+@functions{
+    public class IndexModel : PageModel
+    {
+        private DataContext _context;
+        public Product product { get; set; }
+
+        public IndexModel(DataContext ctx)
+        {
+            _context = ctx;
+        }
+
+        public async Task<IActionResult> OnGetAsync(long id = 2)
+        {
+            var p = await _context.Products.FindAsync(id);
+            if(p == null)
+            {
+                return RedirectToPage("NotFound");
+            }
+            product = p;
+            return Page();
+        }
+    }
+}

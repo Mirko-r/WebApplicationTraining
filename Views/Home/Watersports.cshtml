@@ -1,0 +1,47 @@
+﻿@model Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Condtional rendering -->
+    @if (Model.Price > 200)
+    {
+        <div>Luxury - @Model.Name</div>
+    }
+    else
+    {
+        <div>Basic - @Model.Name</div>
+    }
+
+
+    <div>@switch (Model.Name)
+    {
+        case "Kayak":
+            @:Kayak
+            break;
+        default:
+            @:defprodName
+            break;
+    }</div>
+
+    <h6 class="bg-primary text-white text-center m-2 p-2">Product Table - Watersports</h6>
+    <table class="table table-sm table-bordered text-center" data-id="@Model.ProductId">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category Id</th>
+            <th>Supllier Id</th>
+        </tr>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Price.ToString("c")</td>
+            <td>@Model.CategoryId</td>
+            <td>@Model.SupplierId</td>
+            <td>@((-Model.Price * 0.2m).ToString("c"))</td>
+        </tr>
+    </table>
+</body>
+</html>

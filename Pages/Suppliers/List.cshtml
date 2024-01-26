@@ -1,0 +1,35 @@
+﻿@page "/lists/suppliers"
+@model ListModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <ul>
+    @foreach(Supplier s in Model.suppliers)
+    {
+        <li>@s.Name</li>
+    }
+    </ul>
+</body>
+</html>
+
+@functions{
+    public class ListModel : PageModel {
+
+        public IEnumerable<Supplier> suppliers;
+        private DataContext _context;
+
+        public ListModel(DataContext ctx)
+        {
+            _context = ctx;
+        }
+
+        public void OnGet()
+        {
+            suppliers = _context.Suppliers;
+        }
+    }
+}

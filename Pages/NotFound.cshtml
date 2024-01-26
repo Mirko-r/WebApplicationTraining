@@ -1,0 +1,23 @@
+﻿@page "/noid"
+@model NotFoundModel
+
+@foreach(Product p in Model.products){
+    <div>@p.Name</div>
+}
+
+@functions{
+    public class NotFoundModel : PageModel{
+        private DataContext _context;
+        public IEnumerable<Product> products { get; set; }
+
+        public NotFoundModel(DataContext ctx)
+        {
+            _context = ctx;
+        }
+
+        public void OnGet()
+        {
+            products = _context.Products;
+        }
+    }
+}

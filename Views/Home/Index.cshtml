@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Product Table";
+}
+@* @section Header {
+    Product Information
+} *@
+<div>@ViewBag.Info1</div>
+<h6 class="bg-primary text-white text-center m-2 p-2">Product Table</h6>
+<table class="table table-sm table-bordered text-center">
+    <tr><th>Name</th><th>Price</th><th>Category Id</th><th>Index on average</th></tr>
+    <tr>
+        <td>@Model.Name</td>
+        <td>@Model.Price.ToString("c")</td>
+        <td>@Model.CategoryId</td>
+        <td>@(Model.Price / ViewBag.AveragePrice)%</td>
+    </tr>
+</table>
+
+@* @section Footer{
+    Footer info from index.cshtml
+} *@

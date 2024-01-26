@@ -1,0 +1,12 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h6 class="bg-warning text-white text-center m-2 p-2">@(ViewBag.Title ?? "Layout")</h6>
+    <hr />
+    @RenderBody()
+    <hr />
+</body>
+</html>

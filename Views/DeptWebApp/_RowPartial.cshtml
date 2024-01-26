@@ -1,0 +1,12 @@
+﻿@model Department
+<tr>
+    <td>
+        @Model.Name
+    </td>
+    <td>
+        @Model.DepartmentId
+    </td>
+    <td>
+        <a href="/deptwebapp/delete?id=@Model.DepartmentId">Delete</a>
+    </td>
+</tr>
